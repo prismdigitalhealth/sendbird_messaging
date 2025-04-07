@@ -18,11 +18,11 @@ function App() {
   });
 
   const myColorSet = {
-    '--sendbird-light-primary-500': '#1c2231',
-    '--sendbird-light-primary-400': '#1c2231',
-    '--sendbird-light-primary-300': '#1c2231',
-    '--sendbird-light-primary-200': '#1c2231',
-    '--sendbird-light-primary-100': '#a1afbd',
+    '--sendbird-light-primary-500': '#403788',
+    '--sendbird-light-primary-400': '#4C569A',
+    '--sendbird-light-primary-300': '#505D9F',
+    '--sendbird-light-primary-200': '#5873AC',
+    '--sendbird-light-primary-100': '#DCE8FF',
   };
   
   const handleLogin = (event) => {
