@@ -17,6 +17,14 @@ function App() {
     return window.innerWidth <= 768 || detectMobileDevice();
   });
 
+  const myColorSet = {
+    '--sendbird-light-primary-500': '#1c2231',
+    '--sendbird-light-primary-400': '#1c2231',
+    '--sendbird-light-primary-300': '#1c2231',
+    '--sendbird-light-primary-200': '#1c2231',
+    '--sendbird-light-primary-100': '#a1afbd',
+  };
+  
   const handleLogin = (event) => {
     event.preventDefault();
     if (userId.trim() !== '') {
@@ -87,6 +95,7 @@ function App() {
                 enableTypingIndicator: true,
               }
             }}
+            colorSet={myColorSet}
           />
         </div>
       )}
