@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState, useCallback } from 'react';
 import { App as SendbirdApp } from '@sendbird/uikit-react';
+import { TypingIndicatorType } from '@sendbird/uikit-react';
 import '@sendbird/uikit-react/dist/index.css';
 
 // Function to detect mobile devices using user agent
@@ -73,6 +74,19 @@ function App() {
             // The breakpoint is the key property for mobile optimization
             // When it's true or matches screen width, mobile UI is activated
             breakpoint={isMobile}
+            // Enable typing indicators in both channel and channel list
+            uikitOptions={{
+              groupChannel: {
+                // Enable typing indicator in the group channel
+                enableTypingIndicator: true,
+                // Show both bubble and text typing indicators
+                typingIndicatorTypes: new Set([TypingIndicatorType.Bubble, TypingIndicatorType.Text]),
+              },
+              groupChannelList: {
+                // Enable typing indicator in the channel list
+                enableTypingIndicator: true,
+              }
+            }}
           />
         </div>
       )}
