@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { App as SendbirdApp } from '@sendbird/uikit-react';
 import { TypingIndicatorType } from '@sendbird/uikit-react';
 import '@sendbird/uikit-react/dist/index.css';
@@ -48,10 +48,7 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserId('');
-  };
+
 
   return (
     <div className="App">
@@ -71,10 +68,6 @@ function App() {
         </div>
       ) : (
         <div className="chat-container">
-          <div className="logout-bar">
-            <span>Logged in as: <strong>{userId}</strong></span>
-            <button onClick={handleLogout} className="logout-button">Logout</button>
-          </div>
           <SendbirdApp
             appId="BFB0CED3-D43A-4C53-9C75-76549E1FFD78"
             userId={userId}
