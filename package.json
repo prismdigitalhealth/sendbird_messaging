@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@sendbird/uikit-react": "^3.16.2",
+    "@sendbird/chat": "^4.17.2",
+    "@sendbird/uikit-react": "^3.16.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",

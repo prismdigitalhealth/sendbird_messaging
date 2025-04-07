@@ -1,11 +1,20 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { App as SendbirdApp } from '@sendbird/uikit-react';
 import '@sendbird/uikit-react/dist/index.css';
+
+// Function to detect mobile devices using user agent
+const detectMobileDevice = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+};
 
 function App() {
   const [userId, setUserId] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    return window.innerWidth <= 768 || detectMobileDevice();
+  });
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -19,6 +28,16 @@ function App() {
   const handleUserIdChange = (event) => {
     setUserId(event.target.value);
   };
+  
+  // Add resize listener to update mobile state
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768 || detectMobileDevice());
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -51,6 +70,9 @@ function App() {
             appId="BFB0CED3-D43A-4C53-9C75-76549E1FFD78"
             userId={userId}
             nickname={userId}
+            // The breakpoint is the key property for mobile optimization
+            // When it's true or matches screen width, mobile UI is activated
+            breakpoint={isMobile}
           />
         </div>
       )}
